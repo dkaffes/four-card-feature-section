@@ -1,0 +1,246 @@
+/**************************/
+/* A (more) Modern CSS Reset*/
+/* https://piccalil.li/blog/a-more-modern-css-reset/ */
+/* by Andy Bell */
+/**************************/
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/**************************/
+
+/* Custom properties (variables) for colors */
+:root {
+  /* Primary colors */
+  --red: hsl(0, 78%, 62%);
+  --cyan: hsl(180, 62%, 55%);
+  --orange: hsl(34, 97%, 64%);
+  --blue: hsl(212, 86%, 64%);
+  /* Neutral colors */
+  --very-dark-blue: hsl(234, 12%, 34%);
+  --grayish-blue: hsl(229, 6%, 66%);
+  --very-light-gray: hsl(0, 0%, 98%);
+}
+
+/* General component styling */
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9375rem; /* 15 pixels */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.5rem;
+  background-color: var(--very-light-gray);
+}
+
+/* Text container */
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4rem;
+  max-width: 34rem;
+}
+
+.text--ribbon,
+.text--title {
+  font-size: 1.5rem;
+}
+
+.text--ribbon {
+  font-weight: 200;
+}
+
+.text--title {
+  font-weight: 600;
+  margin-block: 0.5rem;
+}
+
+.text--description {
+  text-align: center;
+  color: var(--grayish-blue);
+}
+
+/* Card container */
+.card-container {
+  display: grid;
+  grid-auto-rows: minmax(100px, auto);
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  grid-template-areas:
+    "su"
+    "te"
+    "ka"
+    "ca";
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 1.2rem;
+  border: 4px solid transparent;
+  border-radius: 8px;
+  box-shadow: 0px 5px 10px 0px var(--grayish-blue);
+}
+
+.card--title {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.card--description {
+  font-weight: 200;
+  font-size: 0.875rem;
+}
+
+.card--img {
+  align-self: flex-end;
+  /* width: 3rem; */
+  margin-top: 2rem;
+}
+
+.card--supervisor {
+  grid-area: su;
+  border-top-color: var(--cyan);
+}
+
+.card--team-builder {
+  grid-area: te;
+  border-top-color: var(--red);
+}
+
+.card--karma {
+  grid-area: ka;
+  border-top-color: var(--orange);
+}
+
+.card--calculator {
+  grid-area: ca;
+  border-top-color: var(--blue);
+}
+
+/* Footer */
+.attribution {
+  font-size: 0.6875rem; /* 11px */
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/**************************/
+/* MEDIA QUERIES */
+/* changing the card container to a 3-column, 4-row grid at min-width: 800px*/
+/**************************/
+
+@media (width >= 50rem) {
+  .text-container {
+    margin-inline: auto;
+  }
+
+  .text--ribbon,
+  .text--title {
+    font-size: 2rem;
+  }
+
+  .card-container {
+    max-width: 65rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      ".  te ."
+      "su te ca"
+      "su ka ca"
+      ".  ka . ";
+  }
+}
