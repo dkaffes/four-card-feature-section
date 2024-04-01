@@ -132,13 +132,13 @@ body {
   max-width: 34rem;
 }
 
-.text--ribbon,
 .text--title {
   font-size: 1.5rem;
 }
 
 .text--ribbon {
   font-weight: 200;
+  display: block;
 }
 
 .text--title {
@@ -229,7 +229,6 @@ body {
     margin-inline: auto;
   }
 
-  .text--ribbon,
   .text--title {
     font-size: 2rem;
   }
